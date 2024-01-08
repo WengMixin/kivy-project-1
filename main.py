@@ -13,8 +13,8 @@ class SerialApp(App):
         usb_device_list = usb_manager.getDeviceList()
         label_text = 'Connected USB Devices:\n' + \
             '\n'.join(usb_device_list.keys())
-        return Label(text=label_text)
+        self.root.ids.usb_label.text = label_text
 
 
-if __name__ == 'main':
+if __name__ == '__main__':
     SerialApp().run()
