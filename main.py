@@ -1,20 +1,18 @@
 from kivy.app import App
+from kivy.uix.button import Button
+from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.label import Label
-from jnius import autoclass
-
-Context = autoclass('android.content.Context')
-UsbManager = autoclass('android.hardware.usb.UsbManager')
-UsbDevice = autoclass('android.hardware.usb.UsbDevice')
+from kivy.uix.textinput import TextInput
 
 
-class SerialApp(App):
-    def build(self):
-        usb_manager = UsbManager.getSystemService(Context.USB_SERVICE)
-        usb_device_list = usb_manager.getDeviceList()
-        label_text = 'Connected USB Devices:\n' + \
-            '\n'.join(usb_device_list.keys())
-        self.root.ids.usb_label.text = label_text
+class Interface(FloatLayout):
+    def display_information(self):
+        data = self.ids.textInput.text
+        self.ids.label.text = data
 
 
-if __name__ == '__main__':
-    SerialApp().run()
+class ProjectApp(App):
+    pass
+
+
+ProjectApp().run()
