@@ -13,6 +13,9 @@ class Interface(FloatLayout):
     def __init__(self, **kwargs):
         super(Interface, self).__init__(**kwargs)
         self.usb_manager = None
+
+    def on_kv_post(self, base_widget):
+        # 现在可以安全地访问 self.ids
         self.setup_usb_manager()
 
     def setup_usb_manager(self):
@@ -50,6 +53,7 @@ class Interface(FloatLayout):
 
 class ProjectApp(App):
     def build(self):
+        interface = Interface()
         return Interface()
 
 
