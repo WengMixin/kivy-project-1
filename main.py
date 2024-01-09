@@ -21,10 +21,13 @@ class Interface(FloatLayout):
             self.usb_manager = activity.getSystemService(Context.USB_SERVICE)
             self.update_usb_devices()  # 更新 USB 设备列表
         except JavaException as je:
-            print("Java Exception: ", je)
+            print("set-up-Java Exception: ", je)
+            print("set-up-Java Exception Traceback: ",
+                  traceback.format_exc())
             # 在这里处理 Java 层面的异常
         except Exception as e:
-            print("Exception: ", e)
+            print("setup-Exception: ", e)
+            print("setup-Exception Traceback: ", traceback.format_exc())
             # 在这里处理 Python 层面的异常
 
     def update_usb_devices(self):
@@ -36,10 +39,12 @@ class Interface(FloatLayout):
             else:
                 self.ids.usb_spinner.values = ('No USB Device Detected',)
         except JavaException as je:
-            print("Java Exception: ", je)
+            print("Update_Java Exception: ", je)
+            print("Update_Java Exception Traceback: ", traceback.format_exc())
             # 在这里处理 Java 层面的异常
         except Exception as e:
-            print("Exception: ", e)
+            print("Update_func_Exception: ", e)
+            print("Update_func_Exception Traceback: ", traceback.format_exc())
             # 在这里处理 Python 层面的异常
 
 
